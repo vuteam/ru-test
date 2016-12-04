@@ -1,0 +1,46 @@
+config.entriescount=9
+config.Entries.1.text=http://yp.shoutcast.com/sbin/tunein-station.pls?id=1009184
+config.Entries.1.audio=audio/mpeg
+config.Entries.1.type=pls
+config.Entries.1.name=1.FM - BAY SMOOTH JAZZ RADIO - a SHOUTcast.com member station - a SHOUTcast.com member station
+config.Entries.1.bitrate=128
+config.Entries.0.text=http://yp.shoutcast.com/sbin/tunein-station.pls?id=86433
+config.Entries.0.audio=audio/mpeg
+config.Entries.0.type=pls
+config.Entries.0.name=Absolutely Smooth Jazz - SKY.FM - the world's smoothest jazz 24 hours a day - a SHOUTcast.com member station - a SHOUTcast.com member station
+config.Entries.0.bitrate=96
+config.Entries.5.text=http://yp.shoutcast.com/sbin/tunein-station.pls?id=1009184
+config.Entries.5.audio=audio/mpeg
+config.Entries.5.type=pls
+config.Entries.5.name= 1.FM - BAY SMOOTH JAZZ RADIO
+config.Entries.5.bitrate=128
+config.Entries.6.text=http://yp.shoutcast.com/sbin/tunein-station.pls?id=9254848
+config.Entries.6.audio=audio/mpeg
+config.Entries.6.type=pls
+config.Entries.6.name= Chroma Smooth Jazz - a SHOUTcast.com member station
+config.Entries.6.bitrate=128
+config.Entries.3.text=http://yp.shoutcast.com/sbin/tunein-station.pls?id=675131
+config.Entries.3.audio=audio/mpeg
+config.Entries.3.type=pls
+config.Entries.3.name=Flower Power Radio  - Far Out And Groovy Tunes From The  50's 60's & 70's - a SHOUTcast.com member station - a SHOUTcast.com member station
+config.Entries.3.bitrate=128
+config.Entries.2.text=http://yp.shoutcast.com/sbin/tunein-station.pls?id=316134
+config.Entries.2.audio=audio/mpeg
+config.Entries.2.type=pls
+config.Entries.2.name=Amazing Smooth and Jazz - a SHOUTcast.com member station - a SHOUTcast.com member station
+config.Entries.2.bitrate=128
+config.Entries.4.text=http://yp.shoutcast.com/sbin/tunein-station.pls?id=1598941
+config.Entries.4.audio=audio/mpeg
+config.Entries.4.type=pls
+config.Entries.4.name=Blues Connection - On AIR - Blues Rock and Soul - a SHOUTcast.com member station - a SHOUTcast.com member station
+config.Entries.4.bitrate=128
+config.Entries.7.text=http://yp.shoutcast.com/sbin/tunein-station.pls?id=558051
+config.Entries.7.audio=audio/mpeg
+config.Entries.7.type=pls
+config.Entries.7.name= RockRadio1.Com - Classic Hard Rock and Heavy Metal
+config.Entries.7.bitrate=128
+config.Entries.8.text=http://yp.shoutcast.com/sbin/tunein-station.pls?id=1049700
+config.Entries.8.audio=audio/mpeg
+config.Entries.8.type=pls
+config.Entries.8.name= New Orleans Radio - a SHOUTcast.com member station
+config.Entries.8.bitrate=128

@@ -1,0 +1,82 @@
+Changelog
+=========
+Git 86   20-12-2015
+Did some overdue maintenance on plugin.py concerning the VU+ models
+
+Git 85   13-12-2015
+Added support for the VU+ Solo 4K. Beware: this is a very early test, the plugin still needs some tidying up.
+Don't try to flash the made back-up of the Solo 4k with the built in OFGWRITE, it needs an update to be able to flash the Solo 4K
+Reverted the truncating of the kernelpartition
+
+Git 84   06-12-2015
+Added seasons greetings
+
+Git 83   30-11-2015
+Added support for the Xsarius Fusion HD SE
+Corrected the extra path for the Xsarius HD
+
+Git 82   14-11-2015
+Completed support for the Xsarius Fusion HD (at the moment still no confirmation if it functions), looking for some owners of a Fusion who would like to test it and report if all is functioning as it should.
+Removed the support for unknown devices.
+
+Git 81   10-11-2015
+Added support for Xsarius Fusion HD (very experimental, use with care!)
+
+Git 80   25-10-2015
+Temporary measure: bail out if the receiver is a VU+ Solo 4K until more is known what the requirements are to make a working back-up
+Lookuptable expanded with the entry Solo4K
+
+Git 78 & 79
+Git 78 has been canceled/reverted by Git 79
+
+Git 77   27-09-2015
+Removed some obsolete code, this were some remains of experiments which I overlooked
+
+Git 76   25-09-2015
+Made some alterations in the way a back-up is made: if a backup is made onto the harddisk there is no longer a flashable copy made in the root of the harddisk. The backup is only stored in the folder "fullbackup_<type> etc.
+If the backup is made onto an USB-stick then the copy is made in the root and a copy in the folder fullbackup_<type> etc.
+
+Git 75   25-07-2015
+Very small change in handling/reporting unknown device
+
+Git 74   24-07-2015
+Very small change in selecting the correct model from the list
+
+Git 73   23-07-2015
+Added some kind of support for unknown receivers. If the receiver is not found in the lookuptable the program won't be aborted but a backup will be made with some standard file naming. The user has at least to rename the folder where the backup is made.
+Highly experimental but it is worth a go.
+WTE gave me the idea to read some necessities from the receiver. Thanks!
+
+Git 72   28-06-2015
+Some small alterations in the way the kernel is dumped, after dumping it will truncated to it's true size
+Inspired by the code of Athoik as seen in: http://tinyurl.com/ofmcvuo
+Thanks!
+
+Git 71   24-06-2015
+Openmb added support for the Miraclebox Mini plus and Micro
+
+Git 67   06-06-2015
+Some small alterations
+
+Git 64   12-02-2015
+Added support for the HD 500c
+
+Git 63   09-02-2015
+Russian translation improved (thanks to 2boom)
+
+Git 62   01-02-2015
+Added support for the HD 1200
+
+Git 61   28-01-2015
+Replaced the help and info buttons
+
+Git 60   23-01-2015
+Some fine tuning for the full HD skins
+
+Git 59   21-01-2015
+A first step to make the BackupSuite also useable on full HD format skins (1920*1080). 
+There still has to be done some work but because of the experimental stage of the full HD skin this has, for me, a low priority at the moment.
+
+Git 58   18-01-2015
+- Some minor changes in the code (some inspired by code of Athoik)
+- Some cosmetics in the lookuptable

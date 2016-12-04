@@ -1,0 +1,24 @@
+<wizard>
+	<step id="cleanupconfig" nextstep="end">
+		<text value="Configure system startup Cleanup Wizard on a memory overflow event, as well as the parameters used in order to save internal memory. Please press OK to save settings and run cleaning not used languages, if enabled." />
+		<displaytext value="Cleanup configuration wizard" />
+		<config screen="CleanupConfiguration" module="Plugins.SystemPlugins.CleanupWizard.plugin" type="ConfigList" />
+		<code>
+self.clearSelectedKeys()
+self.selectKey("OK")
+self.selectKey("UP")
+self.selectKey("DOWN")
+self.selectKey("LEFT")
+self.selectKey("RIGHT")
+		</code>
+	</step>
+	<step id="end" timeout="10" timeoutaction="changestep" step="quit" >
+<!-- TRANSLATORS: Do not put the template element [timeout] -->
+		<text value="The wizard is finished now. Please click OK to continue, or it happens automatically after [timeout] seconds." />
+	</step>
+	<step id="quit" laststep="true">
+		<condition>
+self.condition = self.isLastWizard
+		</condition>
+	</step>
+</wizard>

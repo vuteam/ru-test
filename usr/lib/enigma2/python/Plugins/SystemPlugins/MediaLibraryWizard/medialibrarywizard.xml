@@ -1,0 +1,64 @@
+<wizard>
+	<step id="welcome" nextstep="selectmedium">
+		<text value="Welcome.\n\nIf you want to add all the media files found on the hard disk, this wizard will guide you through the basic settings of your media library media center. Press OK to start configuring your media library" />
+		<displaytext value="Media wizard" />
+		<code>
+self.clearSelectedKeys()
+self.selectKey("OK")
+		</code>
+	</step>
+
+	<step id="selectmedium">
+		<text value="Please select medium to be scanned and press OK to continue." />
+		<displaytext value="Select medium" />
+		<list type="dynamic" source="listMedium" evaluation="MediumSelectionMade" onselect="MediumSelectionMoved" />
+		<code>
+self.clearSelectedKeys()
+self.selectKey("OK")
+self.selectKey("UP")
+self.selectKey("DOWN")
+		</code>
+		<code pos="after" async="yes">
+self.checkMedium(self.selectedMedium)
+		</code>
+	</step>
+
+	<step id="selectaction">
+		<text value="Please select action and press OK to continue." />
+		<displaytext value="Select action" />
+		<list type="dynamic" source="listAction" evaluation="ActionSelectionMade" onselect="ActionSelectionMoved" />
+		<code>
+self.clearSelectedKeys()
+self.selectKey("OK")
+self.selectKey("UP")
+self.selectKey("DOWN")
+		</code>
+		<code pos="after" async="yes">
+self.checkAction(self.selectedAction)
+		</code>
+	</step>
+
+	<step id="statusaddok">
+		<text value="Media added to library successfully. Please press OK to continue." />
+		<displaytext value="Media added to library successfully." />
+		<list type="dynamic" source="listAgainAction" evaluation="ActionSelectionMade" onselect="ActionSelectionMoved" />
+		<code>
+self.clearSelectedKeys()
+self.selectKey("OK")
+		</code>
+		<code pos="after" async="yes">
+self.checkMediumfinishedCB(True)
+		</code>
+	</step>
+
+	<step id="end" timeout="10" timeoutaction="changestep" step="quit" >
+<!-- TRANSLATORS: Do not put the template element [timeout] -->
+		<text value="The wizard is finished now. Please click OK to continue, or it happens automatically after [timeout] seconds." />
+	</step>
+
+	<step id="quit" laststep="true">
+		<condition>
+self.condition = self.isLastWizard
+		</condition>
+	</step>
+</wizard>

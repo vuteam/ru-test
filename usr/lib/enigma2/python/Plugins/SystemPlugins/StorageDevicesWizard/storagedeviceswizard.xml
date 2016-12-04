@@ -1,0 +1,117 @@
+<wizard>
+	<step id="settingsquestion">
+		<condition>
+from Components.Harddisk import harddiskmanager
+from Plugins.SystemPlugins.StorageDevicesWizard.StorageDevicesWizard import checkStaticEnable
+self.sdCount = harddiskmanager.HDDCount()
+self.staticEnable = checkStaticEnable()
+self.condition = ((self.sdCount != 0 and config.misc.firstrun.value and config.usage.config_current_sd.value == '') or not self.staticEnable)
+		</condition>
+		<text value="WARNING!!!\nWithout this condition, the software will not work consistently! For correct operation of your media center, you must assign a hard disk or any other device as a static storage HDD device! For normal operation required to activate the static storage devices!" />
+		<list>
+			<listentry caption="Yes, configure storage devices currently" step="selectstorage" />
+			<listentry caption="No, just start my media center" step="end" />
+		</list>
+		<code>
+self.clearSelectedKeys()
+self.selectKey("OK")
+		</code>
+	</step>
+
+	<step id="selectstorage">
+		<text value="Please select drive to install or use the default settings for the storage devices.\n\nPlease press OK to continue." />
+		<displaytext value="Select storage device" />
+		<list type="dynamic" source="listDevices" evaluation="deviceSelectionMade" onselect="deviceSelectionMoved" />
+		<code>
+self.clearSelectedKeys()
+self.selectKey("OK")
+self.selectKey("UP")
+self.selectKey("DOWN")
+		</code>
+		<code pos="after"  async="yes">
+self.nextAction()
+		</code>
+	</step>
+
+	<step id="storageconfig" nextstep="selectstorage">
+		<condition>
+self.condition = (self.selectedDevice is not None)
+		</condition>
+		<text value="Please configure your storage device by filling out the required values and press OK to continue." />
+		<displaytext value="Configure storage device" />
+		<config screen="StorageDeviceSetup" module="StorageDeviceSetup" args="(self.selectedDevice)" type="ConfigList" />
+		<code>
+self.clearSelectedKeys()
+self.selectKey("OK")
+self.selectKey("UP")
+self.selectKey("DOWN")
+self.selectKey("LEFT")
+self.selectKey("RIGHT")
+		</code>
+	</step>
+	<step id="factoryquestion">
+		<text value="Do you really want factory settings for storage devices?\nYou will then need to reboot your media center!" />
+		<code>
+self.clearSelectedKeys()
+self.selectKey("OK")
+self.selectKey("UP")
+self.selectKey("DOWN")
+		</code>
+		<list>
+			<listentry caption="Yes, factory settings for storage devices" step="factory" />
+			<listentry caption="No, do nothing" step="selectstorage" />
+		</list>
+	</step>
+
+	<step id="factory">
+		<text value="Your media center will restart after pressing OK on your remote control." />
+		<code>
+import os
+from Components.Harddisk import harddiskmanager
+from Tools.Directories import fileExists, removeFile
+if fileExists('/etc/extmemory'):
+	removeFile('/etc/extmemory')
+harddiskmanager.removeStaticMount('/media/hdd')
+harddiskmanager.removeStaticMount('/media/usb')
+harddiskmanager.removeStaticMount('/media/cf')
+if os.path.islink('/media/hdd'):
+	os.remove('/media/hdd')
+	os.makedirs('/media/hdd')
+self.rebootNotConfirmed()
+self.clearSelectedKeys()
+self.selectKey("OK")
+		</code>
+		<list>
+			<listentry caption="Yes, perform a reboot now" step="reboot" />
+		</list>
+	</step>
+
+	<step id="rebootquestion">
+		<text value="Your media center will restart after pressing OK on your remote control." />
+		<code>
+self.clearSelectedKeys()
+self.selectKey("OK")
+		</code>
+		<list>
+			<listentry caption="Yes, perform a reboot now" step="reboot" />
+		</list>
+	</step>
+
+	<step id="reboot">
+		<code>
+self.rebootNotConfirmed()
+		</code>
+		<text value="Your media centre is reboot..." />
+	</step>
+
+	<step id="end" timeout="10" timeoutaction="changestep" step="quit" >
+<!-- TRANSLATORS: Do not put the template element [timeout] -->
+		<text value="The wizard is finished now. Please click OK to continue, or it happens automatically after [timeout] seconds." />
+	</step>
+
+	<step id="quit" laststep="true">
+		<condition>
+self.condition = self.isLastWizard
+		</condition>
+	</step>
+</wizard>

@@ -1,0 +1,36 @@
+<wizard>
+	<step id="settingsquestion">
+		<text value="This wizard update the picons, whatever they are displayed in the interface!" />
+		<list>
+			<listentry caption="Yes, configure update of picons" step="piconconfig" />
+			<listentry caption="No, just start my media center" step="end" />
+		</list>
+		<code>
+self.clearSelectedKeys()
+self.selectKey("OK")
+		</code>
+	</step>
+	<step id="piconconfig" nextstep="end">
+		<text value="Please configure the type of picons (only create new ones), select a source (or bouquets providers) and press OK, that would start the update." />
+		<displaytext value="Configure picons for update" />
+		<config screen="PiconsUpdateCenter" module="Plugins.Extensions.PiconsUpdateCenter.plugin" args="True" type="ConfigList" />
+		<code>
+self.clearSelectedKeys()
+self.selectKey("OK")
+self.selectKey("UP")
+self.selectKey("DOWN")
+self.selectKey("LEFT")
+self.selectKey("RIGHT")
+		</code>
+	</step>
+	<step id="end" timeout="10" timeoutaction="changestep" step="quit" >
+<!-- TRANSLATORS: Do not put the template element [timeout] -->
+		<text value="The wizard is finished now. Please click OK to continue, or it happens automatically after [timeout] seconds." />
+	</step>
+
+	<step id="quit" laststep="true">
+		<condition>
+self.condition = self.isLastWizard
+		</condition>
+	</step>
+</wizard>

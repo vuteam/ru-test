@@ -1,0 +1,34 @@
+<wizard>
+	<step id="restorequestion">
+		<condition>
+from Plugins.SystemPlugins.SoftwareManager.IpkgWizard import checkIpkgBackup
+self.backuppath = checkIpkgBackup()
+self.condition = (self.backuppath)
+		</condition>
+		<text value="Do you want to restore your additional packages?" />
+		<list>
+			<listentry caption="Yes, restore the additional packages now" step="restore" />
+			<listentry caption="No, just start my media center" step="end" />
+		</list>
+		<code>
+self.clearSelectedKeys()
+self.selectKey("OK")
+		</code>
+	</step>
+
+	<step id="restore" nextstep="restoreresult">
+		<text value="GUI will restart after restore. Please press OK to start the restore now." />
+		<config screen="IpkgRestoreScreenWizard" module="Plugins.SystemPlugins.SoftwareManager.BackupRestore" type="ConfigList" />
+	</step>
+
+	<step id="end" timeout="10" timeoutaction="changestep" step="quit" >
+<!-- TRANSLATORS: Do not put the template element [timeout] -->
+		<text value="The wizard is finished now. Please click OK to continue, or it happens automatically after [timeout] seconds." />
+	</step>
+
+	<step id="quit" laststep="true">
+		<condition>
+self.condition = self.isLastWizard
+		</condition>
+	</step>
+</wizard>
